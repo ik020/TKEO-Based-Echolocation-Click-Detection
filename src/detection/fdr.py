@@ -15,10 +15,8 @@ def fdr_peak(sigma_g, N, fs):
     Ts = 1 / fs
     n = np.arange(-N, N + 1)
 
-    # MAF1 impulse response (Eq. 12) - Gaussian
     h_maf1 = (Ts / (sigma_g * np.sqrt(2 * np.pi))) * np.exp(-((n * Ts) ** 2) / (2 * sigma_g ** 2))
 
-    # MAF2 impulse response (Eq. 13) — average of h_maf1 values (rectangular, same gain)
     h_maf2 = np.full_like(h_maf1, np.mean(h_maf1))
 
     # Evaluate at n=0 (center index)
