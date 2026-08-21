@@ -18,15 +18,19 @@ x_noisy = add_noise(x, snr_db=snr_db)
 psi_raw = tkeo(x_noisy, FS)
 
 # Filter parameters 
-sigma_g = 5e-4  
-N = 21
+
+sigma_tk_seconds = SIGMA / np.sqrt(2)          
+sigma_g = sigma_tk_seconds * FS                 
+N = int(np.ceil(5 * sigma_g))                  
+
+print(f"sigma_g (samples): {sigma_g:.2f}, N: {N}")
 
 psi_maf1 = maf1(psi_raw, sigma_g, N)
 psi_maf2 = maf2(psi_raw, N)
 
 # Compute FDR curve and FDR_peak 
 fdr_curve = fdr(psi_maf1, psi_maf2)
-peak_value = fdr_peak(sigma_g, N, FS)
+peak_value = fdr_peak(sigma_g, N)
 
 os.makedirs(FIGURES_DIR, exist_ok=True)
 os.makedirs(METRICS_DIR, exist_ok=True)
