@@ -16,4 +16,6 @@ FS = 500_000 # sampling frequency (Hz)
 FIGURES_DIR = "results/figures"
 METRICS_DIR = "results/metrics"
 
+'''SNR levels for noise addition'''
+SNR_LEVELS_DB = [20, 10, 5, 0]
 
