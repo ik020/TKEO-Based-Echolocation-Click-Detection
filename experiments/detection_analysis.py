@@ -31,6 +31,7 @@ peak_value = fdr_peak(sigma_g, N)
 threshold_fraction = 0.5
 threshold = threshold_fraction * peak_value
 
+
 detections = detect_clicks(fdr_curve, t, threshold)
 
 os.makedirs(FIGURES_DIR, exist_ok=True)
