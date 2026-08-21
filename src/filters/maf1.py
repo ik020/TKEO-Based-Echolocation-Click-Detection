@@ -1,3 +1,4 @@
+import numpy as np
 
 def maf1(signal, sigma_g, N):
     half = N // 2
